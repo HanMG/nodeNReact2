@@ -14,3 +14,4 @@ yarn-error.log*
 
 .vscode
 movieAPI
+client/src/components/Config.js
