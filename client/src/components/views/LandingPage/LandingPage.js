@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 import MainImage from './Sections/MainImage';
-
+import GridCards  from '../commons/GridCards';
+import { Row } from 'antd';
 
 function LandingPage() {
 
@@ -36,6 +37,21 @@ function LandingPage() {
                 <h2>Movies by latest</h2>
                 <hr />
                 {/* Moive Grid Cards*/}
+                <Row gutter={[16,16]}>
+                    {Moives && Moives.map((movie, index)=> (
+                        <React.Fragment key={index}>
+                            <GridCards
+                                image = {movie.poster_path ?
+                                     `${IMAGE_BASE_URL}w500${movie.poster_path}`: null
+                                }
+                                movieId = {movie.id}
+                                movieName = {movie.title}
+                            />
+
+                        </React.Fragment>
+                    ))}                    
+                </Row>
+
                 
             </div>
             <div style={{display:'flex',justifyContent:'center'}}>
